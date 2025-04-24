@@ -21,11 +21,14 @@ class MusicBeatState extends FlxUIState
 		return Controls.instance;
 	}
 
+	#if mobile
 	public var touchPad:TouchPad;
 	public var touchPadCam:FlxCamera;
 	public var mobileControls:IMobileControls;
 	public var mobileControlsCam:FlxCamera;
+	#end
 
+	#if mobile
 	public function addTouchPad(DPad:String, Action:String)
 	{
 		touchPad = new TouchPad(DPad, Action);
@@ -99,6 +102,7 @@ class MusicBeatState extends FlxUIState
 			touchPad.cameras = [touchPadCam];
 		}
 	}
+	#end
 
 	override function destroy()
 	{
