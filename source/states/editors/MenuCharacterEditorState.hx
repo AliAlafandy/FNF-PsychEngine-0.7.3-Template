@@ -62,8 +62,10 @@ class MenuCharacterEditorState extends MusicBeatState
 		addEditorBox();
 		FlxG.mouse.visible = true;
 		updateCharTypeBox();
-		
+
+		#if mobile
 		addTouchPad("MENU_CHARACTER", "MENU_CHARACTER");
+		#end
 
 		super.create();
 	}
