@@ -105,7 +105,9 @@ class WeekEditorState extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 
+		#if mobile
 		addTouchPad("UP_DOWN", "B");
+		#emd
 
 		super.create();
 	}
