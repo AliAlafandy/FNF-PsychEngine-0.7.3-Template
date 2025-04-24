@@ -342,9 +342,11 @@ class ChartingState extends MusicBeatState
 			\nA/D - Go to the previous/next section
 			\nLeft/Right - Change Snap
 			\nUp/Down - Change Conductor's Strum Time with Snapping"
-			+ #if FLX_PITCH "\nLeft Bracket / Right Bracket - Change Song Playback Rate (SHIFT to go Faster)
+			+ #if FLX_PITCH 
+			"\nLeft Bracket / Right Bracket - Change Song Playback Rate (SHIFT to go Faster)
 			\nALT + Left Bracket / Right Bracket - Reset Song Playback Rate"
-			+ #end "\nHold Shift to move 4x faster
+			+ #end 
+			"\nHold Shift to move 4x faster
 			\nHold Control and click on an arrow to select it
 			\nZ/X - Zoom in/out
 			\n
@@ -392,7 +394,9 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 
+		#if mobile
 		addTouchPad("LEFT_FULL", "CHART_EDITOR");
+		#end
 				
 		super.create();
 	}
