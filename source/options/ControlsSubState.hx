@@ -113,8 +113,6 @@ class ControlsSubState extends MusicBeatSubstate
 		text.setScale(0.4);
 		add(text);
 
-		addTouchPad("NONE", "B");
-
 		createTexts();
 	}
 
@@ -281,7 +279,7 @@ class ControlsSubState extends MusicBeatSubstate
 
 		if(!binding)
 		{
-			if(controls.BACK || FlxG.gamepads.anyJustPressed(B))
+			if(controls.BACK || || FlxG.gamepads.anyPressed(B))
 			{
 				ClientPrefs.saveSettings();
                                 controls.isInSubstate = false;
@@ -312,11 +310,7 @@ class ControlsSubState extends MusicBeatSubstate
 					add(bindingText);
 
 					var funnyText:String;
-
-					if (controls.mobileC)
-						funnyText = "Hold B to Cancel\nHold C to Delete";
-					else
-						funnyText = "Hold ESC to Cancel\nHold Backspace to Delete";
+					funnyText = "Hold ESC to Cancel\nHold Backspace to Delete";
 
 					bindingText2 = new Alphabet(FlxG.width / 2, 340, funnyText, true);
 					bindingText2.alignment = CENTERED;
@@ -344,7 +338,7 @@ class ControlsSubState extends MusicBeatSubstate
 		{
 			var altNum:Int = curAlt ? 1 : 0;
 			var curOption:Array<Dynamic> = options[curOptions[curSelected]];
-			if(touchPad.buttonB.pressed || controls.BACK || FlxG.gamepads.anyPressed(B))
+			if(controls.BACK || FlxG.gamepads.anyPressed(B))
 			{
 				holdingEsc += elapsed;
 				if(holdingEsc > 0.5)
@@ -353,7 +347,7 @@ class ControlsSubState extends MusicBeatSubstate
 					closeBinding();
 				}
 			}
-			else if (touchPad.buttonC.pressed || FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
+			else if (FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
 			{
 				holdingEsc += elapsed;
 				if(holdingEsc > 0.5)
