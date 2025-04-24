@@ -92,7 +92,7 @@ class TitleState extends MusicBeatState
 		#if CHECK_FOR_UPDATES
 		if(ClientPrefs.data.checkForUpdates && !closedState) {
 			trace('checking for update');
-			var http = new haxe.Http("https://raw.githubusercontent.com/MobilePorting/FNF-PsychEngine-Mobile/main/gitVersion.txt");
+			var http = new haxe.Http("https://raw.githubusercontent.com/AliAlafandy/FNF-PsychEngine-0.7.3-Template/main/gitVersion.txt");
 
 			http.onData = function (data:String)
 			{
@@ -356,6 +356,7 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
+		#if mobile
 		#if FLX_TOUCH
 		for (touch in FlxG.touches.list)
 		{
@@ -364,6 +365,7 @@ class TitleState extends MusicBeatState
 				pressedEnter = true;
 			}
 		}
+		#end
 		#end
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
