@@ -26,9 +26,7 @@ class MusicBeatState extends FlxUIState
 	public var touchPadCam:FlxCamera;
 	public var mobileControls:IMobileControls;
 	public var mobileControlsCam:FlxCamera;
-	#end
 
-	#if mobile
 	public function addTouchPad(DPad:String, Action:String)
 	{
 		touchPad = new TouchPad(DPad, Action);
