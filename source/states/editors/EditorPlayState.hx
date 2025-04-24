@@ -150,10 +150,12 @@ class EditorPlayState extends MusicBeatSubstate
 		add(tipText);
 		FlxG.mouse.visible = false;
 
+		#if mobile
 		addMobileControls();
 		mobileControls.instance.visible = true;
 		mobileControls.onButtonDown.add(onButtonPress);
 		mobileControls.onButtonUp.add(onButtonRelease);
+		#end
 		
 		generateSong(PlayState.SONG.song);
 
