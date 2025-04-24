@@ -316,8 +316,11 @@ class ModsMenuState extends MusicBeatState
 		bottomText.scrollFactor.set();
 		add(bottomText);
 
+		#if mobile
 		addTouchPad("UP_DOWN", "B");
 		touchPad.y -= 215; // so that you can press the buttons.
+		#end
+		
 		if (controls.mobileC)
 			touchPad.alpha = 0.3;
 		super.create();
@@ -908,8 +911,8 @@ class ModItem extends FlxSpriteGroup
 			if(pack.color != null)
 			{
 				this.bgColor = FlxColor.fromRGB(pack.color[0] != null ? pack.color[0] : 170,
-											  pack.color[1] != null ? pack.color[1] : 0,
-											  pack.color[2] != null ? pack.color[2] : 255);
+											pack.color[1] != null ? pack.color[1] : 0,
+											pack.color[2] != null ? pack.color[2] : 255);
 			}
 			this.mustRestart = (pack.restart == true);
 		}
