@@ -265,7 +265,9 @@ class PlayState extends MusicBeatState
 	public var startCallback:Void->Void = null;
 	public var endCallback:Void->Void = null;
 
+	#if mobile
 	public var luaTouchPad:TouchPad;
+	#end
 
 	override public function create()
 	{
@@ -627,10 +629,12 @@ class PlayState extends MusicBeatState
 			}
 		#end
 
+		#if mobile
 		addMobileControls();
 		mobileControls.instance.visible = true;
 		mobileControls.onButtonDown.add(onButtonPress);
 		mobileControls.onButtonUp.add(onButtonRelease);
+		#end
 
 		startCallback();
 		RecalculateRating();
@@ -3594,6 +3598,7 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
+	#if mobile
 	public function makeLuaTouchPad(DPadMode:String, ActionMode:String) {
 		if(members.contains(luaTouchPad)) return;
 
@@ -3688,4 +3693,5 @@ class PlayState extends MusicBeatState
 		}
 		return false;
 	}
+	#end
 }
