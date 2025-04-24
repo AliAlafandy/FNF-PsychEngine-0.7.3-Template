@@ -20,12 +20,17 @@ class OptionsState extends MusicBeatState
 
 	function openSelectedSubstate(label:String) {
 		persistentUpdate = false;
-		if (label != "Adjust Delay and Combo") removeTouchPad();
+		if (label != "Adjust Delay and Combo") #if mobile removeTouchPad(); #end
 		switch(label) {
 			case 'Note Colors':
 				openSubState(new options.NotesSubState());
+			#if mobile
+			case 'Mobile Controls':
+				openSubState(new MobileControlSelectSubState());
+			#else
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
+			#end
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
 			case 'Visuals and UI':
@@ -85,7 +90,7 @@ class OptionsState extends MusicBeatState
 		ClientPrefs.saveSettings();
 
 		#if mobile
-		addTouchPad("UP_DOWN", "A_B_C");
+		addTouchPad("UP_DOWN", "A_B");
 		#end
 
 		super.create();
@@ -102,7 +107,7 @@ class OptionsState extends MusicBeatState
 
 		#if mobile
         	removeTouchPad();
-		addTouchPad("UP_DOWN", "A_B_C");
+		addTouchPad("UP_DOWN", "A_B");
 		#end
 		
 		persistentUpdate = true;
@@ -118,12 +123,6 @@ class OptionsState extends MusicBeatState
 		}
 		if (controls.UI_DOWN_P) {
 			changeSelection(1);
-		}
-
-		if (touchPad.buttonC.justPressed || FlxG.keys.justPressed.CONTROL && controls.mobileC)
-		{
-			persistentUpdate = false;
-			openSubState(new MobileControlSelectSubState());
 		}
 
 		if (controls.BACK) {
