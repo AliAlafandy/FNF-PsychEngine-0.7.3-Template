@@ -72,8 +72,10 @@ class ResetScoreSubState extends MusicBeatSubstate
 		noText.x += 200;
 		add(noText);
 
+		#if mobile
 		addTouchPad("LEFT_RIGHT", "A_B");
 		addTouchPadCamera();
+		#end
 
 		updateOptions();
 	}
@@ -110,10 +112,14 @@ class ResetScoreSubState extends MusicBeatSubstate
                         controls.isInSubstate = false;
 			close();
 		}
+
+		#if mobile
 		if (touchPad == null){ //sometimes it dosent add the tpad, hopefully this fixes it
 		addTouchPad("LEFT_RIGHT", "A_B");
 		addTouchPadCamera();
 		}
+		#end
+		
 		super.update(elapsed);
 	}
 
