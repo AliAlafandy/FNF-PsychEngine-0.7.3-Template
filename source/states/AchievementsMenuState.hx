@@ -122,7 +122,9 @@ class AchievementsMenuState extends MusicBeatState
 		
 		_changeSelection();
 
+		#if mobile
 		addTouchPad("LEFT_FULL", "B_C");
+		#end
 
 		super.create();
 		
@@ -132,7 +134,10 @@ class AchievementsMenuState extends MusicBeatState
 
 	override function closeSubState() {
 		super.closeSubState();
+
+		#if mobile
 		addTouchPad("LEFT_FULL", "B_C");
+		#end
 	}
 
 	function makeAchievement(achievement:String, data:Achievement, unlocked:Bool, mod:String = null)
@@ -303,7 +308,9 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		add(noText);
 		updateOptions();
 
+		#if mobile
 		addTouchPad("LEFT_RIGHT", "A");
+		#end
 	}
 
 	override function update(elapsed:Float)
