@@ -32,7 +32,11 @@ class Paths
 			dumpExclusions.push(key);
 	}
 
-	public static var dumpExclusions:Array<String> = ['assets/shared/music/freakyMenu.$SOUND_EXT', 'assets/shared/mobile/touchpad/bg.png'];
+	public static var dumpExclusions:Array<String> = ['assets/shared/music/freakyMenu.$SOUND_EXT',
+	#if mobile
+	'assets/shared/mobile/touchpad/bg.png'];
+	#end
+	
 	/// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory() {
 		// clear non local assets in the tracked assets list
@@ -111,9 +115,10 @@ class Paths
 			if(FileSystem.exists(modded)) return modded;
 		}
 		#end
+		#if mobile
 		if(library == "mobile")
 			return getSharedPath('mobile/$file');
-
+		#end
 		if (library != null)
 			return getLibraryPath(file, library);
 
