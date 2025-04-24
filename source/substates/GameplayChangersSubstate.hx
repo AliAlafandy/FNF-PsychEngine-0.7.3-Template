@@ -303,12 +303,14 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		if(nextAccept > 0) {
 			nextAccept -= 1;
 		}
+		
 		#if mobile
 		if (touchPad == null){ //sometimes it dosent add the tpad, hopefully this fixes it
 		addTouchPad("LEFT_FULL", "A_B_C");
 		addTouchPadCamera();
 		}
 		#end
+		
 		super.update(elapsed);
 	}
 
