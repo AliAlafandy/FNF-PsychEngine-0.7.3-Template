@@ -523,8 +523,10 @@ class NoteOffsetState extends MusicBeatState
 		timeTxt.visible = !onComboMenu;
 		beatText.visible = !onComboMenu;
 
+		#if mobile
 		addTouchPad(onComboMenu ? "NONE" : "LEFT_RIGHT", "A_B_C");
 		addTouchPadCamera();
+		#end
 
 		controllerPointer.visible = false;
 		FlxG.mouse.visible = false;
