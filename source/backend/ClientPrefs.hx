@@ -9,6 +9,7 @@ import states.TitleState;
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
 	// Mobile and Mobile Controls Releated
+	#if mobile
 	public var extraButtons:String = "NONE"; // mobile extra button option
 	public var hitboxPos:Bool = true; // hitbox extra button position option
 	public var dynamicColors:Bool = true; // yes cause its cool -Karim
@@ -19,6 +20,8 @@ import states.TitleState;
 	public var storageType:String = "EXTERNAL_DATA";
 	#end
 	public var hitboxType:String = "Gradient";
+	#end
+	
 	public var popUpRating:Bool = true;
 	public var vsync:Bool = false;
 	public var gameOverVibration:Bool = false;
@@ -88,7 +91,7 @@ import states.TitleState;
 	public var goodWindow:Int = 90;
 	public var badWindow:Int = 135;
 	public var safeFrames:Float = 10;
-	public var guitarHeroSustains:Bool = true;
+	public var guitarHeroSustains:Bool = false;
 	public var discordRPC:Bool = true;
 }
 
