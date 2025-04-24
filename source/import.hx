@@ -15,6 +15,7 @@ import backend.Achievements;
 #end
 
 //Mobile Controls
+#if mobile
 import mobile.objects.MobileControls;
 import mobile.objects.IMobileControls;
 import mobile.objects.Hitbox;
@@ -24,6 +25,7 @@ import mobile.input.MobileInputID;
 import mobile.backend.MobileData;
 import mobile.input.MobileInputManager;
 import mobile.backend.TouchUtil;
+#end
 
 // Android
 #if android
