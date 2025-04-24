@@ -84,7 +84,9 @@ class OptionsState extends MusicBeatState
 		changeSelection();
 		ClientPrefs.saveSettings();
 
+		#if mobile
 		addTouchPad("UP_DOWN", "A_B_C");
+		#end
 
 		super.create();
 	}
@@ -97,8 +99,12 @@ class OptionsState extends MusicBeatState
 		ClientPrefs.saveSettings();
 		ClientPrefs.loadPrefs();
 		controls.isInSubstate = false;
-        removeTouchPad();
+
+		#if mobile
+        	removeTouchPad();
 		addTouchPad("UP_DOWN", "A_B_C");
+		#end
+		
 		persistentUpdate = true;
 	}
 
