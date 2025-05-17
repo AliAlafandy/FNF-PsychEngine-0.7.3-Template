@@ -28,7 +28,7 @@
 	<define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
 
 	<!--Mobile Controls Define-->
-	<define name="mobileC" if="mobile" /> <!--Can be added windows, mac or linux-->
+	<define name="mobile" if="mobile" /> <!--Can be added windows, mac or linux-->
 
 	<!--Always enable Null Object Reference check-->
 	<haxedef name="HXCPP_CHECK_POINTER" />
