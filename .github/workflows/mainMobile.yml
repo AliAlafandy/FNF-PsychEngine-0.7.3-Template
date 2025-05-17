@@ -1,0 +1,27 @@
+name: Main Mobile
+
+on: workflow_dispatch
+
+jobs:
+  Build:
+    name: ${{ matrix.name }}
+    strategy:
+      matrix:
+        include:
+          - name: Android
+            os: macos-15
+            buildArgs: "android -ONLY_ARMV7"
+            artifactName: Android
+            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
+          - name: iOS
+            os: macos-15
+            buildArgs: "ios -nosign"
+            artifactName: iOS
+            artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
+    uses: ./.github/workflows/build.yml
+    with:
+        name: ${{ matrix.name }}
+        os: ${{ matrix.os }}
+        buildArgs: ${{ matrix.buildArgs }}
+        artifactName: ${{ matrix.artifactName }}
+        artifactPath: ${{ matrix.artifactPath }}
