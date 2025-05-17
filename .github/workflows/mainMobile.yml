@@ -18,7 +18,7 @@ jobs:
             buildArgs: "ios -nosign"
             artifactName: iOS
             artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/buildMobile.yml
     with:
         name: ${{ matrix.name }}
         os: ${{ matrix.os }}
