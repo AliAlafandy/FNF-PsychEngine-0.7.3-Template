@@ -5,7 +5,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxState;
 import backend.PsychCamera;
 
-#if mobileC
+#if mobile
 import mobile.MobileControls;
 import mobile.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
@@ -29,7 +29,7 @@ class MusicBeatState extends FlxUIState
 		return Controls.instance;
 	}
 
-	#if mobileC
+	#if mobile
 	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
 	var trackedInputsMobileControls:Array<FlxActionInput> = [];
@@ -110,7 +110,7 @@ class MusicBeatState extends FlxUIState
 
 	override function destroy():Void
 	{
-		#if mobileC
+		#if mobile
 		if (trackedInputsMobileControls.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsMobileControls);
 
@@ -120,7 +120,7 @@ class MusicBeatState extends FlxUIState
 
 		super.destroy();
 
-		#if mobileC
+		#if mobile
 		if (virtualPad != null)
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
 
