@@ -51,6 +51,7 @@ jobs:
       - name: Install Libraries
         run: |
           haxelib install hmm --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib run hmm install --quiet
 
       - name: Configure Android
