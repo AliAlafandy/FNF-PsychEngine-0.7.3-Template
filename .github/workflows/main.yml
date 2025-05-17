@@ -48,7 +48,7 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: linuxBuild
+          name: Linux
           path: 'export/release/linux/bin'
   buildWindows:
     runs-on: windows-latest
@@ -77,7 +77,7 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: windowsBuild
+          name: Windows
           path: export/release/windows/bin
   buildMac:
     runs-on: macos-latest
@@ -104,5 +104,5 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: macBuild
+          name: MacOS
           path: export/release/macos/bin
