@@ -37,9 +37,16 @@ jobs:
         with:
           haxe-version: ${{ env.HAXE_VERSION }}
 
+      - name: Update APT
+        if: inputs.name == 'Linux'
+        run: |
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+          sudo apt-get update --fix-missing
+
       - name: Install libVLC
         if: inputs.name == 'Linux'
-        run: sudo apt install libvlc-dev libvlccore-dev
+        run: sudo apt-get install -y libvlc-dev libvlccore-dev
 
       - name: Setup XCode
         if: inputs.name == 'iOS'
@@ -52,8 +59,16 @@ jobs:
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
 
-      - name: Configure Android
-        if: inputs.name == 'Android'
+      - name: Configure Android x64
+        if: inputs.name == 'Android x64'
+        run: |
+          haxelib run lime config ANDROID_SDK $ANDROID_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
+          haxelib run lime config JAVA_HOME $JAVA_HOME_17_arm64
+          haxelib run lime config ANDROID_SETUP true
+
+      - name: Configure Android x32
+        if: inputs.name == 'Android x32'
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
