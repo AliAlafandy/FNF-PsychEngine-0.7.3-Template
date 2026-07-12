@@ -34,10 +34,15 @@ jobs:
             buildArgs: "mac -final"
             artifactName: MacOS
             artifactPath: export/release/macos/bin/*
-          - name: Android
+          - name: Android x64
             os: macos-15
-            buildArgs: "android -final -D officialBuild"
-            artifactName: Android
+            buildArgs: "android -final -ONLY_ARM64"
+            artifactName: Android x64
+            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
+          - name: Android x32
+            os: macos-15
+            buildArgs: "android -final -ONLY_ARMV7"
+            artifactName: Android x32
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
           - name: iOS
             os: macos-15
@@ -101,14 +106,23 @@ jobs:
           cd /home/runner/MacOS
           tar czf "/home/runner/${{ env.PROJECT_NAME }}-MacOS.tar" .
 
-      - name: Download Android Build
+      - name: Download Android x64 Build
         uses: actions/download-artifact@main
         with:
-          name: Android
+          name: Android x64
           path: /home/runner
 
-      - name: Move Android File
-        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.apk /home/runner/${{ env.PROJECT_NAME }}-Android.apk
+      - name: Move Android x64 File
+        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.apk /home/runner/${{ env.PROJECT_NAME }}-Android-x64.apk
+
+      - name: Download Android x32 Build
+        uses: actions/download-artifact@main
+        with:
+          name: Android x32
+          path: /home/runner
+
+      - name: Move Android x32 File
+        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.apk /home/runner/${{ env.PROJECT_NAME }}-Android-x32.apk
 
       - name: Download iOS Build
         uses: actions/download-artifact@main
@@ -126,7 +140,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           name: "Template"
-          tag_name: "0.7.3"
+          tag_name: "0.6.3"
           last_release: false
           files: |
             /home/runner/*.apk
