@@ -339,14 +339,14 @@ class Paths
 
 			if (FileSystem.exists(mods(Mods.currentModDirectory + '/' + key)) || FileSystem.exists(mods(key)))
 				return true;
-			#if (android || linux || ios)
+			#if (linux || ios)
 				else if (FileSystem.exists(findFile('$mod/$key')))
 					return true;
 			#end
 			
 			if (FileSystem.exists(mods('$key')))
 				return true;
-			#if (android || linux || ios)
+			#if (linux || ios)
 			else if (FileSystem.exists(findFile(key)))
 				return true;
 			#end
@@ -538,7 +538,7 @@ class Paths
 			if(FileSystem.exists(fileToCheck)) {
 				return fileToCheck;
 			}
-			#if (android || linux || ios)
+			#if (linux || ios)
 			else
 				{
 					var newPath:String = findFile(key);
@@ -557,7 +557,7 @@ class Paths
 	}
 	#end
 
-	#if (android || linux || ios)
+	#if (linux || ios)
 	static function findFile(key:String):String {
 		var targetParts:Array<String> = key.replace('\\', '/').split('/');
 		if (targetParts.length == 0) return null;
